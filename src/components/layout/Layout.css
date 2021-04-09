@@ -1,0 +1,53 @@
+.navContainer{
+  height: 60px;
+  background-color: teal;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+}
+.layout{
+  margin-top: 60px;
+}
+.menu{
+  margin: auto 20px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.menu span {
+  display: block;
+  height: 4px;
+  margin: 3px;
+  width: 30px;
+  background-color: whitesmoke;
+  transition: opacity .3s ease-in-out;
+}
+
+.menu:hover > span {
+  opacity: .5;
+}
+
+.mobileOnly{
+  display: block;
+}
+
+.desktopOnly{
+  display: none;
+}
+
+@media (min-width:580px){
+  .mobileOnly{
+    display: none;
+  }
+  .desktopOnly{
+    display: block;
+  }
+  .menu{
+    display: none;
+  }
+}

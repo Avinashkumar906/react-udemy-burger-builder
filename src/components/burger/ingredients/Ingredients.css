@@ -1,0 +1,45 @@
+.top{
+  background-image: url('../../../assets/img/top.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 6.5rem;
+  min-height: 6.5rem;
+}
+.cheese{
+  background-image: url('../../../assets/img/cheese.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 2rem;
+  min-height: 2rem;
+}
+.meat{
+  background-image: url('../../../assets/img/meat.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 2rem;
+  min-height: 2rem;
+}
+.salad{
+  background-image: url('../../../assets/img/salad.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  min-height: 1.5rem;
+  height: 1.5rem;
+}
+.bottom{
+  background-image: url('../../../assets/img/bottom.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 2.5rem;
+  min-height: 2.5rem;
+}
