@@ -30,16 +30,25 @@ const BuilderPanel = (props) => {
         <div>
           {panelItems.map((item)=>(
             <div key={item.title} className={css.panelItem}>
-              <span className={css.more} onClick={() => props.add(item.type)}>More</span>
+              <span 
+                className={css.more} 
+                onClick={() => props.add(item.type)}>More
+              </span>
               <span className={css.title}>{item.title}</span>
-              <span className={props.ingredients[item.type] ? css.less : css.disable} onClick={() => props.less(item.type)}>Less</span>
+              <span 
+                className={props.ingredients[item.type] ? css.less : css.disable} 
+                onClick={() => props.less(item.type)}>Less
+              </span>
             </div>
           ))}
         </div>
         <div>
             <p>
               <span>Total : Rs. {total}/- </span>
-              <span className={total > BUN_PRICE? css.more : css.disable} onClick={props.toggle}>Checkout!</span>
+              <span 
+                className={total > BUN_PRICE? css.more : css.disable} 
+                onClick={props.toggle}>Checkout!
+              </span>
             </p>
         </div>
       </div>
