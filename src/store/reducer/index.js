@@ -18,6 +18,9 @@ const reducer = (state = INGREDIENTS_STATE, action)=>{
       ingredients[action.payload] -= 1;
       return {...state, ingredients:ingredients};
     }
+    case 'RESET':{
+      return {...state, ...INGREDIENTS_STATE};
+    }
     default:
       break;
   }

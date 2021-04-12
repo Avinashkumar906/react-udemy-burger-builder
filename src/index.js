@@ -2,12 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import Reducer from './store/reducer/index'
+import reportWebVitals from './reportWebVitals';
 
-const store = createStore(Reducer);
+import firebase from './configuration/firebase'
+import store from './store/index'
+
+// initialize firebase
+firebase();
 
 ReactDOM.render(
   <Provider store={store}>

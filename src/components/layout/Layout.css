@@ -1,4 +1,4 @@
-.navContainer{
+.navContainer {
   height: 60px;
   background-color: teal;
   position: fixed;
@@ -10,15 +10,18 @@
   justify-content: space-between;
   align-items: center;
 }
-.layout{
+
+.layout {
   margin-top: 60px;
 }
-.menu{
+
+.menu {
   margin: auto 20px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
 }
+
 .menu span {
   display: block;
   height: 4px;
@@ -28,26 +31,29 @@
   transition: opacity .3s ease-in-out;
 }
 
-.menu:hover > span {
+.menu:hover>span {
   opacity: .5;
 }
 
-.mobileOnly{
+.mobileOnly {
   display: block;
 }
 
-.desktopOnly{
+.desktopOnly {
   display: none;
+  width: 100%;
 }
 
-@media (min-width:580px){
-  .mobileOnly{
+@media (min-width:580px) {
+  .mobileOnly {
     display: none;
   }
-  .desktopOnly{
+
+  .desktopOnly {
     display: block;
   }
-  .menu{
+
+  .menu {
     display: none;
   }
 }

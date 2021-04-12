@@ -1,12 +1,18 @@
 import React, {useState} from 'react'
 import { useFormik } from 'formik'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import { connect } from 'react-redux'
+import axios from '../../configuration/axios'
+import { ITEM_PRICE } from '../../constants/constants'
 
 import css from './Checkout.css'
 
 const Checkout = (props) => {
-  
+
+  const price = ITEM_PRICE;
+  const BUN_PRICE = 30;
+  const total = Object.keys(props.ingredients).reduce((a,b)=>a + (props.ingredients[b] * price[b]), BUN_PRICE);
+  const items = Object.values(props.ingredients).reduce((a, b) => a+b, 0);
   const [orderPlaced, setOrderPlaced] = useState(false)
   
   const formik = useFormik(
@@ -15,19 +21,22 @@ const Checkout = (props) => {
         fname:'',
         lname:'',
         email:'',
-        address:''
+        address:'',
+        ingredients:props.ingredients,
+        total:total,
       },
       onSubmit:value =>{
-        axios.post('https://react-6302e-default-rtdb.firebaseio.com/orders.json',value)
-          .then(
-            res=>{
-              setOrderPlaced(true);
-              formik.resetForm()
-            }
-          )
-          .catch(
-            err=>console.log(err)
-          )
+        axios.post('/orders.json',value)
+        .then(
+          res=>{
+            setOrderPlaced(true);
+            formik.resetForm();
+            props.resetIngredients();
+          }
+        )
+        .catch(
+          err=>console.log(err)
+        )
       }
     }
   )
@@ -81,12 +90,18 @@ const Checkout = (props) => {
         </div>
       </form>
     </div>)
-  
+
   if(orderPlaced){
     content = 
     (<div className={css.container}>
       <h2>Order placed!</h2>
       <Link className={css.btnCustom} to="/orders" >View History</Link>
+    </div>);
+  } else if(!items){
+    content = 
+    (<div className={css.container}>
+      <h2>No items in Burger!</h2>
+      <Link className={css.btnCustom} to="/home" >Home</Link>
     </div>);
   }
 
@@ -97,4 +112,12 @@ const Checkout = (props) => {
   )
 }
 
-export default Checkout
+const mapStateToProps = state =>({
+  ingredients: state.ingredients
+})
+
+const mapDispatchToProps = dispatch => ({
+  resetIngredients: () => dispatch({ type:'RESET' })
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout)

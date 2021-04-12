@@ -31,7 +31,9 @@ class BurgerBuilder extends Component {
             ingredients={this.props.ingredients} 
             total={this.state.total} />
         </Modal>
-        <Burger ingredients={this.props.ingredients} />
+        <div style={{'height':'300px','overflow':'auto'}}>
+          <Burger ingredients={this.props.ingredients} />
+        </div>
         <BuilderPanel 
           toggle={this.toggleModalHandler} 
           add={this.props.addItemHandler} 
