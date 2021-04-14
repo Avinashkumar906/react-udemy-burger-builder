@@ -8,24 +8,14 @@ import Sidebar from '../navigation/Sidebar/Sidebar'
 const Layout = (props)=>{
 
   const [sidebarState, setSidebarState] = useState(false);
-
   const toggleSidebarHandler = ()=>{
+    console.log('clicked')
     setSidebarState((prevState)=>!prevState);
   } 
 
   return (
     <Wrapper>
-
-      <div className={css.navContainer}>
-        <div className={css.menu} onClick={toggleSidebarHandler}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div className={css.desktopOnly}>
-          <Nav></Nav>
-        </div>
-      </div>
+      <Nav toggleSidebar={() => toggleSidebarHandler()}></Nav>
 
       <div className={css.mobileOnly}>
         <Sidebar click={toggleSidebarHandler} active={sidebarState}></Sidebar>
@@ -38,4 +28,4 @@ const Layout = (props)=>{
   )
 }
 
-export default Layout
+export default Layout;

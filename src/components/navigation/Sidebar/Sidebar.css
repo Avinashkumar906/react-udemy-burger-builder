@@ -1,76 +1,21 @@
-.sidebar {
-  width: 80%;
-  max-width: 380px;
-  background-color: white;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  height: 100%;
-  transform: translateX(-100%);
-  transition: transform .3s ease-in-out;
-  z-index: 200;
-  padding: 30px 20px;
+@media (min-width:580px) {
+  .mobileOnly {
+    display: none;
+  }
 }
 
-.sidebar.active {
-  transform: translateX(0);
+@media (max-width:579px) {
+  .desktopOnly {
+    display: none;
+  }
 }
 
-.close {
-  position: relative;
-  display: block;
-  width: 40px;
-  height: 40px;
-  margin-left: auto;
-  overflow: visible;
+.min400 {
+  min-width: 400px;
 }
 
-.close span {
-  display: block;
-  position: absolute;
-  height: 4px;
-  width: 30px;
-  cursor: pointer;
-  background-color: brown;
-}
-
-.span1 {
-  transform: rotateZ(45deg);
-}
-
-.span2 {
-  transform: rotateZ(-45deg);
-}
-
-.navBar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.navBar ul {
-  list-style-type: none;
-  font-size: 16px;
-  text-decoration: none;
-  padding: 0;
-  margin: 0;
-}
-
-.navBar li {
-  padding: 8px;
-  margin: 8px;
-  text-align: center;
-}
-
-.navBar ul li a {
-  color: brown;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.navBar ul li a:hover {
-  color: cadetblue;
-  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+.closeIcon {
+  width: 50px;
+  height: 50px;
+  /* align-self: flex-end; */
 }

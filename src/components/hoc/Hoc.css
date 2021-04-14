@@ -1,4 +1,4 @@
-.backdrop{
+.backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,7 +8,8 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 100;
 }
-.modal{
+
+.modal {
   width: 80%;
   max-width: 500px;
   margin: 0 auto;
@@ -17,19 +18,24 @@
   padding: 10px 20px;
   background-color: whitesmoke;
 }
-.modalContainer.active{
-  transform: translateY(0);
-}
-.modalContainer{
+
+.modalContainer {
   margin-top: 10%;
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
+  display: none;
   z-index: 500;
   transition: all .5s;
   transform: translateY(-100vh);
 }
-.none{
+
+.modalContainer.active {
+  transform: translateY(0);
+  display: block;
+}
+
+.none {
   display: none;
 }

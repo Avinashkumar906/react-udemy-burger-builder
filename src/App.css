@@ -1,7 +1,9 @@
-.app {
-  text-align: center;
-  background-color: brown;
+a {
+  text-decoration: none !important;
+  color: inherit !important;
 }
-.flex{
-  display: flex;
+
+body,
+html {
+  overflow: hidden;
 }
