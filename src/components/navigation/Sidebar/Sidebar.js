@@ -21,7 +21,7 @@ const Sidebar = (props) => {
       <List className={css.min400}>
         {
           NAV_ITEMS.map((item)=>(
-            <ListItem>
+            <ListItem key={`sidebar_${item.title}`}>
               <Link component={RouterLink} to={item.link}>
                 {item.title}
               </Link>

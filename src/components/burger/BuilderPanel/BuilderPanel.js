@@ -2,6 +2,7 @@ import React from 'react';
 
 import css from './BuilderPanel.css';
 import { ITEM_PRICE } from '../../../constants/constants'
+import { Button, Chip, Typography } from '@material-ui/core';
 
 const panelItems = [{
     title: 'Cheese',
@@ -25,31 +26,26 @@ const BuilderPanel = (props) => {
 
   return (
     <div className={css.container}>
-      <span>Builder Panel</span>
+      <Typography variant="h4" align="center">Builder Panel</Typography>
       <div className={css.flex}>
         <div>
           {panelItems.map((item)=>(
             <div key={item.title} className={css.panelItem}>
-              <span 
-                className={css.more} 
-                onClick={() => props.add(item.type)}>More
-              </span>
+              <Button  variant="contained" color="secondary" onClick={() => props.add(item.type)}>
+                <span>More</span> 
+              </Button>
               <span className={css.title}>{item.title}</span>
-              <span 
-                className={props.ingredients[item.type] ? css.less : css.disable} 
-                onClick={() => props.less(item.type)}>Less
-              </span>
+              <Button variant="contained" color="secondary" disabled={!props.ingredients[item.type]} onClick={() => props.less(item.type)}>
+                <span>Less</span>
+              </Button>
             </div>
           ))}
-        </div>
-        <div>
-            <p>
-              <span>Total : Rs. {total}/- </span>
-              <span 
-                className={total > BUN_PRICE? css.more : css.disable} 
-                onClick={props.toggle}>Checkout!
-              </span>
-            </p>
+          <div  style={{'textAlign':'center'}} >
+              <Typography variant="h6">Total : Rs. {total}/- </Typography>
+              <Button variant="contained" color="primary" disabled={!(total > BUN_PRICE)} onClick={props.toggle}>
+                Checkout!
+              </Button>
+          </div>
         </div>
       </div>
     </div>

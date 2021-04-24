@@ -1,27 +1,30 @@
-.container{
+.container {
   display: block;
   max-width: 720px;
   width: 100%;
   margin: auto;
   padding: 20px 0;
 }
-.container > span{
+
+.container>span {
   display: block;
   font-size: 20px;
   font-weight: 900;
   text-align: center;
 }
-.panelItem{
+
+.panelItem {
   max-width: 300px;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   margin: 10px auto;
 }
-.panelItem span{
+
+/* .panelItem span{
   box-shadow: 5px 5px 15px #1212121e;
-}
-.more{
+} */
+.more {
   padding: 10px 20px;
   background-color: wheat;
   border-radius: .375px;
@@ -29,7 +32,8 @@
   box-shadow: 5px 5px 15px #1212121e;
   cursor: pointer;
 }
-.less{
+
+.less {
   padding: 10px 20px;
   cursor: pointer;
   background-color: wheat;
@@ -37,7 +41,8 @@
   box-shadow: 5px 5px 15px #1212121e;
   font-size: 1rem;
 }
-.title{
+
+.title {
   padding: 10px 20px;
   background-color: whitesmoke;
   border-radius: .375px;
@@ -45,7 +50,8 @@
   min-width: 50px;
   text-align: center;
 }
-.disable{
+
+.disable {
   padding: 10px 20px;
   pointer-events: none;
   cursor: not-allowed;
@@ -54,22 +60,24 @@
   border-radius: .375px;
   font-size: 1rem;
 }
+
 .more:hover,
-.less:hover{
+.less:hover {
   opacity: .7;
 }
-.flex{
+
+.flex {
   display: flex;
   justify-content: space-around;
 }
 
-p{
+p {
   width: max-content;
   margin: 30px auto;
 }
 
-@media (max-width:579px){
-  .flex{
+@media (max-width:579px) {
+  .flex {
     flex-direction: column;
   }
 }

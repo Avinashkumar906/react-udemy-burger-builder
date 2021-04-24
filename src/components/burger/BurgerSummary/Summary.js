@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Burger from '../Burger'
 
 import css from './Summary.css';
+import { Button } from '@material-ui/core';
 
 const Summary = (props) => {
   
@@ -30,9 +31,11 @@ const Summary = (props) => {
           )
         }
       </div>
-      <p className={css.proceed}>
+      <p>
         <Link to="/checkout">
-          <span>Proceed to pay: {total}/- </span> 
+          <Button variant="contained" color="primary">
+            Pay: {total}/-
+          </Button> 
         </Link>
       </p>
     </div>

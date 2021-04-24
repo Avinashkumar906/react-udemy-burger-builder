@@ -6,6 +6,7 @@ import axios from '../../configuration/axios'
 import { ITEM_PRICE } from '../../constants/constants'
 
 import css from './Checkout.css'
+import { Button, Container, Grid, TextField, Typography } from '@material-ui/core'
 
 const Checkout = (props) => {
 
@@ -26,82 +27,90 @@ const Checkout = (props) => {
         total:total,
       },
       onSubmit:value =>{
-        axios.post('/orders.json',value)
-        .then(
-          res=>{
-            setOrderPlaced(true);
-            formik.resetForm();
-            props.resetIngredients();
-          }
-        )
-        .catch(
-          err=>console.log(err)
-        )
+        // if(formik.dirty && formik.isValid){
+          axios.post('/orders.json', value)
+          .then(
+            res=>{
+              setOrderPlaced(true);
+              formik.resetForm();
+              props.resetIngredients();
+            }
+          )
+          .catch(
+            err=>console.log(err)
+          )
+        // }
       }
     }
   )
 
   let content = 
-    (<div className={css.container}>
-      <h2>Checkout page!</h2>   
-      <form className={css.form} onSubmit={formik.handleSubmit}>
-        <div className={css.inputGroup50}>
-          <label htmlFor="fname">First Name</label>
-          <input
-            id="fname"
-            name="fname"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.fname}
-          />
-        </div>
-        <div className={css.inputGroup50}>
-          <label htmlFor="lname">Last Name</label>
-          <input
-            id="lname"
-            name="lname"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.lname}
-          />
-        </div>
-        <div className={css.inputGroup100}>
-          <label htmlFor="email">Enter Email</label>
-          <input
-            id="email"
-            name="email"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-          />
-        </div>
-        <div className={css.inputGroup100}>
-          <label htmlFor="name">Your Address</label>
-          <textarea
-            id="address"
-            name="address"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.address} />
-        </div>
-        <div className={css.inputGroup100}>
-          <label htmlFor="name"></label>
-          <input type="submit" value="Submit"></input>
-        </div>
-      </form>
-    </div>)
+    (<form onSubmit={formik.handleSubmit}>
+      <Container maxWidth="sm">
+        <Grid container spacing={3} justify="center" alignItems="center">
+          <Grid item xs={12}><br></br></Grid>
+          <Grid item xs={12}>
+            <Typography variant="h3">Checkout</Typography>
+          </Grid>
+          <Grid item sm={6}>
+            <TextField 
+              id="fname"
+              label="first name"
+              type="text" 
+              onChange={formik.handleChange}
+              value={formik.values.fname} 
+              fullWidth/>
+          </Grid>
+          <Grid item sm={6}>
+            <TextField 
+              id="lname"
+              type="text"
+              label="last name"
+              onChange={formik.handleChange}
+              value={formik.values.lname}
+              fullWidth/>
+          </Grid>
+          <Grid item sm={12}>
+            <TextField 
+              id="email"
+              type="email"
+              label="Enter Email"
+              rows="3"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+              fullWidth/>
+          </Grid>
+          <Grid item sm={12}>
+            <TextField 
+              id="address"
+              type="address"
+              label="Your address"
+              onChange={formik.handleChange}
+              value={formik.values.address}
+              fullWidth/>
+          </Grid>
+          <Grid item sm={12}>
+            <Button variant="contained" color="primary" type="submit">Place Order</Button>
+          </Grid>
+        </Grid>
+      </Container>
+    </form>)
 
   if(orderPlaced){
     content = 
     (<div className={css.container}>
       <h2>Order placed!</h2>
-      <Link className={css.btnCustom} to="/orders" >View History</Link>
+      <Link to="/orders" >
+        <Button variant="contained" color="primary">View History</Button>
+      </Link>
     </div>);
   } else if(!items){
     content = 
     (<div className={css.container}>
       <h2>No items in Burger!</h2>
-      <Link className={css.btnCustom} to="/home" >Home</Link>
+      <Link to="/home" >
+        <Button variant="contained" color="primary">Home</Button>
+      </Link>
     </div>);
   }
 
@@ -112,8 +121,8 @@ const Checkout = (props) => {
   )
 }
 
-const mapStateToProps = state =>({
-  ingredients: state.ingredients
+const mapStateToProps = ({store}) =>({
+  ingredients: store.ingredients
 })
 
 const mapDispatchToProps = dispatch => ({

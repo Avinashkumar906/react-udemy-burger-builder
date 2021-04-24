@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 import Burger from '../../components/burger/Burger';
 import Wrapper from '../../components/hoc/Wrapper';
-import Modal from '../../components/hoc/Modal'
+import Modal from '../../components/hoc/Modal';
 import Summary from '../../components/burger/BurgerSummary/Summary'
 import BuilderPanel from '../../components/burger/BuilderPanel/BuilderPanel';
 import { connect } from 'react-redux'
+import { Grid } from '@material-ui/core';
 
 const INIT_VALUE = {
   purchasable: false,
@@ -31,21 +32,27 @@ class BurgerBuilder extends Component {
             ingredients={this.props.ingredients} 
             total={this.state.total} />
         </Modal>
-        <div style={{'height':'300px','overflow':'auto'}}>
-          <Burger ingredients={this.props.ingredients} />
-        </div>
-        <BuilderPanel 
-          toggle={this.toggleModalHandler} 
-          add={this.props.addItemHandler} 
-          less={this.props.removeItemHandler} 
-          ingredients={this.props.ingredients}/>
+        <Grid container alignItems="center" justify="center" style={{'minHeight':'90vh'}}>
+          <Grid item sm={6} style={{'width':'100%'}}>
+            <div style={{'display':'flex','height':'600px','overflow':'auto'}}>
+              <Burger ingredients={this.props.ingredients} />
+            </div>
+          </Grid>
+          <Grid item sm={6} >
+            <BuilderPanel 
+              toggle={this.toggleModalHandler} 
+              add={this.props.addItemHandler} 
+              less={this.props.removeItemHandler} 
+              ingredients={this.props.ingredients}/>
+          </Grid>
+        </Grid>
       </Wrapper>
     )
   }
 }
 
-const mapStateToProps = state =>(
-  {ingredients : state.ingredients}
+const mapStateToProps = ({store}) =>(
+  {ingredients : store.ingredients}
 );
 
 const mapDispatchToProps = dispatch => ({

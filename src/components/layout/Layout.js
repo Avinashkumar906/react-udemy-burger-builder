@@ -4,6 +4,7 @@ import Wrapper from '../hoc/Wrapper';
 import css from './Layout.css'
 import Nav from '../navigation/Nav/Nav'
 import Sidebar from '../navigation/Sidebar/Sidebar'
+import { Container } from '@material-ui/core';
 
 const Layout = (props)=>{
 
@@ -17,13 +18,13 @@ const Layout = (props)=>{
     <Wrapper>
       <Nav toggleSidebar={() => toggleSidebarHandler()}></Nav>
 
-      <div className={css.mobileOnly}>
+      <Container className={css.mobileOnly}>
         <Sidebar click={toggleSidebarHandler} active={sidebarState}></Sidebar>
-      </div>
+      </Container>
 
-      <div className={css.layout}>
+      <Container>
         {props.children}
-      </div>
+      </Container>
     </Wrapper>
   )
 }

@@ -1,12 +1,12 @@
 @media (min-width:580px) {
   .mobileOnly {
-    display: none;
+    display: none !important;
   }
 }
 
 @media (max-width:579px) {
   .desktopOnly {
-    display: none;
+    display: none !important;
   }
 }
 
